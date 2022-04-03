@@ -1,4 +1,7 @@
 #!/bin/bash
+echo "project management in github"
+
+
 declare -a num
 read < num1.txt num[0]
 read < num2.txt num[1]
