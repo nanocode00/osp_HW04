@@ -1,6 +1,7 @@
 #!/bin/bash
-read < num1.txt num1
-read < num2.txt num2
+declare -a num
+read < num1.txt num[0]
+read < num2.txt num[1]
 
 if [ $# -gt 0 ]; then
 	op=$1
@@ -18,15 +19,15 @@ else
 fi
 
 case $op in
-	add) let result=$num1+$num2 ;;
-	sub) let result=$num1-$num2 ;;
-	div) let result=$num1/$num2 ;;
-	mult) let result=$num1*$num2 ;;
+	add) let result=${num[0]}+${num[1]} ;;
+	sub) let result=${num[0]}-${num[1]} ;;
+	div) let result=${num[0]}/${num[1]} ;;
+	mult) let result=${num[0]}*${num[1]} ;;
 	*) echo "Invalid Operation" ; exit ;;
 esac
 
 echo
-echo "num1 : $num1"
-echo "num2 : $num2"
+echo "num1 : ${num[0]}"
+echo "num2 : ${num[1]}"
 echo "op : $op"
 echo "result : $result"
